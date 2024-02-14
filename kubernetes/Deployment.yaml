@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: $IMAGE_REPO_NAME
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: $IMAGE_REPO_NAME
+  template:
+    metadata:
+      labels:
+        app: $IMAGE_REPO_NAME
+    spec:
+      containers:
+      - name: $IMAGE_REPO_NAME
+        image: $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$IMAGE_REPO_NAME:latest
+        ports:
+        - containerPort: 8500
+        - containerPort: 8501
