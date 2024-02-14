@@ -4,6 +4,7 @@ Detailed Documentation to Setup CI/CD pipeline using AWS for Deep Learning Model
 
 ## OverView
 
+![image](https://github.com/AbhishekPawaskar/torch-serve-deployment-on-aws/assets/46342691/46f34b99-1fa3-4191-9320-85c3b7064c8d)
 
 
 
