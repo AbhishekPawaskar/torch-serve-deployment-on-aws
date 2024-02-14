@@ -38,13 +38,16 @@ Standard `Dockerfile` for Building Images of Servable Deep Learning Models using
 
 
 ```bash
+
 FROM pytorch/torchserve:0.9.0-cpu
+
+ENV MODEL_NAME=ENTER_MODEL_NAME_HERE
 
 WORKDIR /home/model-server/
 
 COPY ${MODEL_NAME}.mar .
 
-CMD ["torchserve", "--start", "--model-store", "/home/model-server", "--models", "model=model.mar"]
+CMD ["torchserve", "--start", "--model-store", "/home/model-server", "--models", "model=<MODEL_NAME>.mar"]
 
 ```
 
@@ -75,7 +78,7 @@ phases:
 
 #### B. AWS S3: 
 
-a. Save the PyTorch model using jit.trace method
+a. Save the PyTorch model using `jit.trace` method
 ```bash
 
 import torch
@@ -88,7 +91,7 @@ traced_model.save("model_name.pt")
 
 ```
 
-b. Create a Handler (Sample handler given below for further customization)
+b. Create a Handler `model_handler.py` (Sample handler given below for further customization)
 ```bash
 # model_handler.py
 
